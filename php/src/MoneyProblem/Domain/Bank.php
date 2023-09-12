@@ -53,14 +53,13 @@ class Bank
      */
     public function convert(float $amount, Currency $currency1, Currency $currency2): float
     {
-        if (!$currency1 == $currency2) {
-            throw new MissingExchangeRateException($currency1, $currency2);
-        }else if(!array_key_exists($currency1 . '->' . $currency2, $this->exchangeRates)){
+        if ($currency1 == $currency2) {
+            return $amount;
+        }
+        if (!array_key_exists($currency1 . '->' . $currency2, $this->exchangeRates)){
             throw new MissingExchangeRateException($currency1, $currency2);
         }
-        return $currency1 == $currency2
-            ? $amount
-            : $amount * $this->exchangeRates[($currency1 . '->' . $currency2)];
+        return $amount * $this->exchangeRates[($currency1 . '->' . $currency2)];
     }
 
 }
