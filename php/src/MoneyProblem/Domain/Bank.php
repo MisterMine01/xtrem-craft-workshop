@@ -6,7 +6,7 @@ use function array_key_exists;
 
 class Bank
 {
-    private array $exchangeRates = [];
+    private array $exchangeRates;
 
     /**
      * @param array $exchangeRates

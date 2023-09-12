@@ -20,7 +20,7 @@ class MoneyCalculator
      * Subtract two amounts of the same currency
      * @param float $amount
      * @param Currency $currency
-     * @param float $amount2
+     * @param int $value
      * @return float
      */
     public static function times(float $amount, Currency $currency, int $value): float
@@ -30,6 +30,10 @@ class MoneyCalculator
 
     /**
      * Divide two amounts of the same currency
+     * @param float $amount
+     * @param Currency $currency
+     * @param int $value
+     * @return float
      */
     public static function divide(float $amount, Currency $currency, int $value): float
     {
