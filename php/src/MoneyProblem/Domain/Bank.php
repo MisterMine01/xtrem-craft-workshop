@@ -6,17 +6,18 @@ use function array_key_exists;
 
 class Bank
 {
-    private $exchangeRates = [];
+    private array $exchangeRates = [];
 
     /**
      * @param array $exchangeRates
      */
-    public function __construct(array $exchangeRates = [])
+    private function __construct(array $exchangeRates = [])
     {
         $this->exchangeRates = $exchangeRates;
     }
 
     /**
+     * Create a bank with a single exchange rate
      * @param Currency $currency1
      * @param Currency $currency2
      * @param float $rate
@@ -31,6 +32,7 @@ class Bank
     }
 
     /**
+     * Add an exchange rate to the bank
      * @param Currency $currency1
      * @param Currency $currency2
      * @param float $rate
@@ -42,6 +44,7 @@ class Bank
     }
 
     /**
+     * Convert an amount from one currency to another currency
      * @param float $amount
      * @param Currency $currency1
      * @param Currency $currency2

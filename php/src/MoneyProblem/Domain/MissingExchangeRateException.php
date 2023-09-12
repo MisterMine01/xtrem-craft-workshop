@@ -6,6 +6,7 @@ class MissingExchangeRateException extends \Exception
 {
 
     /**
+     * Exception constructor when no exchange rate is found
      * @param Currency $currency1
      * @param Currency $currency2
      */
