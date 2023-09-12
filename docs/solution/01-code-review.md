@@ -6,3 +6,4 @@
 - Manque de commentaires 
 - Erreur de code (Constructeur en public)
 - Exception pas très compréhensible dans convert dans Bank.php
+- Nom de méthode pas bon 
