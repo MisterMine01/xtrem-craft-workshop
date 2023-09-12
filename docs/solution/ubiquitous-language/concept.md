@@ -4,10 +4,13 @@
 
 ## Properties
 
+- De quoi elle a besoin pour fonctionnée 
 - Taux de change
+
 
 ## Responsibilities
 
+- Qu'est ce qu'elle a besoin pour fonctionnée 
 - Convertir une monnaie en une autre
 
 ## Invariants
@@ -16,4 +19,4 @@
 
 ## Collaborators
 
-- 
+- Avec quoi la banque travaille 
