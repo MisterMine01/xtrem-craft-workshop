@@ -23,7 +23,7 @@ class MoneyCalculator
      * @param int $value
      * @return float
      */
-    public static function times(float $amount, Currency $currency, int $value): float
+    public static function multiply(float $amount, Currency $currency, int $value): float
     {
         return $amount * $value;
     }
