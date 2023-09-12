@@ -4,7 +4,7 @@
 
 ## Properties
 
-- De quoi elle a besoin pour fonctionnée 
+- De quoi elle a besoin pour fonctionner
 - Taux de change
 
 
