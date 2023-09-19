@@ -12,6 +12,7 @@
         "pitchart/transformer": "^1.6"
     },
     "require-dev": {
+        "infection/codeception-adapter": "^0.4.1",
         "infection/infection": "^0.27.2",
         "phpspec/prophecy": "*",
         "phpunit/phpunit": "^9.5",
