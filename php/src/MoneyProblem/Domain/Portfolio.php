@@ -4,17 +4,12 @@ namespace MoneyProblem\Domain;
 
 class Portfolio
 {
-    public static function create()
-    {
-        return new self();
-    }
-
-    function add(int $money, Currency $currency)
+    public function add(int $money, Currency $currency)
     {
         // TODO: Implement add() method.
     }
 
-    function evaluate(Currency $currency, Bank $bank): int
+    public function evaluate(Currency $currency, Bank $bank): int | float | null
     {
         return 15;
     }
