@@ -51,3 +51,4 @@ Exemple: (post-it vert)
 Exemple: (post-it vert)
 - [ ] 5 USD + 10 EUR = 18940 KRW
 
+![](photo.png)
