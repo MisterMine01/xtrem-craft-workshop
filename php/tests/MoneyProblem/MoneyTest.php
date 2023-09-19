@@ -16,7 +16,7 @@ class MoneyTest extends TestCase
 
     public function test_multiply_in_euros_returns_positive_number()
     {
-        $this->assertLessThan(MoneyCalculator::times(10, Currency::USD(), 2), 0);
+        $this->assertLessThan(MoneyCalculator::multiply(10, Currency::USD(), 2), 0);
     }
 
     public function test_divide_in_korean_won_returns_float()
