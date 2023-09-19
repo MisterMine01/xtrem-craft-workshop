@@ -29,8 +29,8 @@ class PortfolioTest extends TestCase
         // Arrange
         $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
         $portfolio = new Portfolio();
-        $portfolio->add(10, Currency::USD());
-        $portfolio->add(5, Currency::EUR());
+        $portfolio->add(5, Currency::USD());
+        $portfolio->add(10, Currency::EUR());
 
         // Act
         $result = $portfolio->evaluate(Currency::USD(), $bank);
