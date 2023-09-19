@@ -1,0 +1,14 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "src/MoneyProblem"
+        ]
+    },
+    "mutators": {
+        "@default": true
+    },
+    "logs": {
+        html: "infection.html"
+    }
+}
