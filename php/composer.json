@@ -12,6 +12,7 @@
         "pitchart/transformer": "^1.6"
     },
     "require-dev": {
+        "infection/infection": "^0.27.2",
         "phpspec/prophecy": "*",
         "phpunit/phpunit": "^9.5",
         "pitchart/phlunit": "dev-master"
@@ -21,7 +22,10 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "infection/extension-installer": true
+        }
     },
     "autoload": {
         "psr-4": {
