@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\MoneyProblem\Domain;
+namespace Tests\MoneyProblem;
 
 use MoneyProblem\Domain\Bank;
 use MoneyProblem\Domain\Currency;
@@ -47,12 +47,15 @@ class BankTest extends TestCase
     {
         // Arrange
         $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
+        $result = $bank->convert(10, Currency::EUR(), Currency::USD());
+        $this->assertEquals(12, $result);
 
         // Act
+        $bank->addEchangeRate(Currency::EUR(), Currency::USD(), 1.3);
         $result = $bank->convert(10, Currency::EUR(), Currency::USD());
 
         // Assert
-        $this->assertEquals(12, $result);
+        $this->assertEquals(13, $result);
 
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\MoneyProblem\Domain;
+namespace Tests\MoneyProblem;
 
 use MoneyProblem\Domain\Currency;
 use MoneyProblem\Domain\MoneyCalculator;
@@ -14,9 +14,7 @@ class MoneyTest extends TestCase
         $moneyCalculator = MoneyCalculator::add(5, Currency::USD(), 10);
 
         // Assert
-        $this->assertIsFloat($moneyCalculator);
-        $this->assertNotNull($moneyCalculator);
-
+        $this->assertEquals(15, $moneyCalculator);
     }
 
     public function test_multiply_in_euros_returns_positive_number()
@@ -25,15 +23,15 @@ class MoneyTest extends TestCase
         $moneyCalculator = MoneyCalculator::multiply(10, Currency::USD(), 2);
 
         // Assert
-        $this->assertLessThan($moneyCalculator, 0);
+        $this->assertEquals(20, $moneyCalculator);
     }
 
     public function test_divide_in_korean_won_returns_float()
     {
         // Act
-        $moneyCalcultor = MoneyCalculator::divide(4002, Currency::USD(), 4);
+        $moneyCalculator = MoneyCalculator::divide(4002, Currency::USD(), 4);
 
         // Assert
-        $this->assertEquals($moneyCalcultor, 1000.5);
+        $this->assertEquals(1000.5, $moneyCalculator);
     }
 }
