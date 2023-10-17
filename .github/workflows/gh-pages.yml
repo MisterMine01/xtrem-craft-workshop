@@ -20,8 +20,8 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git checkout gh-pages
           git pull origin gh-pages
-          git checkout main php/mutation-report.html
-          git checkout main gh-pages/index.html
+          git checkout master php/mutation-report.html
+          git checkout master gh-pages/index.html
           mv gh-pages/index.html index.html
           mv php/mutation-report.html mutation-report.html
           git add index.html mutation-report.html
