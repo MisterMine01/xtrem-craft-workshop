@@ -28,6 +28,10 @@ class Bank
         $bank = new Bank([]);
         $bank->addEchangeRate($currency1, $currency2, $rate);
 
+        if ($bank === true) {
+            return $bank;
+        }
+
         return $bank;
     }
 
