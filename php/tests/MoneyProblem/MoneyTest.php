@@ -8,6 +8,10 @@ use PHPUnit\Framework\TestCase;
 
 class MoneyTest extends TestCase
 {
+    /**
+     * Fonction qui test l'addition de deux valeurs en dollars et qui retourne un float
+     * @return void
+     */
     public function test_add_in_usd_returns_value()
     {
         // Act 
@@ -17,6 +21,10 @@ class MoneyTest extends TestCase
         $this->assertEquals(15, $moneyCalculator);
     }
 
+    /**
+     * Fonction qui test la multiplication d'une valeur en dollars par 2 et qui retourne un float
+     * @return void
+     */
     public function test_multiply_in_euros_returns_positive_number()
     {
         // Act
@@ -26,6 +34,10 @@ class MoneyTest extends TestCase
         $this->assertEquals(20, $moneyCalculator);
     }
 
+    /**
+     * Fonction qui test la division de'une valeur en Won par 4 et qui retourne un float
+     * @return void
+     */
     public function test_divide_in_korean_won_returns_float()
     {
         // Act

@@ -12,11 +12,11 @@ use PHPUnit\Framework\TestCase;
 class PortfolioTest extends TestCase
 {
     /**
-     * Devise identique sans taux de change
+     * Devises identiques sans taux de change
      *
      * @return void
      */
-    public function test_total_money_in_portfolio_without_exchange_rate()
+    public function test_total_money_with_same_currency_in_portfolio_with_exchange_rate()
     {
         // Arrange
         $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
@@ -32,11 +32,11 @@ class PortfolioTest extends TestCase
     }
 
     /**
-     * Devise différente besoin de taux de change
+     * Devises différente besoins de taux de change
      *
      * @return void
      */
-    public function test_total_money_with_different_in_portfolio_with_exchange_rate()
+    public function test_total_money_with_different_currency_in_portfolio_with_exchange_rate()
     {
         // Arrange
         $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
@@ -52,7 +52,7 @@ class PortfolioTest extends TestCase
     }
 
     /**
-     * Devise différentes mais pas de taux de change
+     * Devises différentes mais pas de taux de change
      *
      * @return void
      */
