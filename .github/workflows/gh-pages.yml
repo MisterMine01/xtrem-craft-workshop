@@ -21,6 +21,7 @@ jobs:
           git fetch
           git checkout origin/gh-pages
           git pull origin gh-pages --force
+          tree
           git checkout master php/mutation-report.html
           git checkout master gh-pages/index.html
           mv gh-pages/index.html index.html
