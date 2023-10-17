@@ -32,6 +32,7 @@ jobs:
           git pull origin gh-pages --force
           tree
           git checkout master gh-pages/index.html
+          git reset HEAD
           mv gh-pages/index.html index.html
           mv artifacts/mutation-report.html mutation-report.html
           git add index.html mutation-report.html
