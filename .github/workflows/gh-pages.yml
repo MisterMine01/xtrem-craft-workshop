@@ -13,32 +13,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download build artifact from triggered workflow
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          run_id: ${{ github.event.workflow_run.id }}
-          name: mutation-report
-          path: ./artifacts
-          search_artifacts: true
+      # - name: Download build artifact from triggered workflow
+      #   uses: dawidd6/action-download-artifact@v2
+      #   with:
+      #     run_id: ${{ github.event.workflow_run.id }}
+      #     name: mutation-report
+      #     path: ./artifacts
+      #     search_artifacts: true
 
 
       - name: checkout with all html
         run: |
-          cd ..
-          echo $PWD
-          tree
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git fetch
           git checkout origin/gh-pages
           git pull origin gh-pages --force
           tree
-          git checkout master php/mutation-report.html
           git checkout master gh-pages/index.html
           mv gh-pages/index.html index.html
-          mv php/mutation-report.html mutation-report.html
           git add index.html mutation-report.html
           git commit -m "Update index.html and mutation-report.html" 
+        # git checkout master php/mutation-report.html
+        # mv php/mutation-report.html mutation-report.html
 
       - name: Push changes
         uses: ad-m/github-push-action@master
