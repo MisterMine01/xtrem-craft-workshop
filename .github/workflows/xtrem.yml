@@ -42,10 +42,9 @@ jobs:
 
     - name: Check for infection
       run: vendor/bin/infection --min-msi=95 --min-covered-msi=95 --threads=4 --show-mutations --only-covered --logger-html='mutation-report.html'
-      
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    # - name: Run test suite
-    #   run: composer run-script test
+    - name: Upload mutation report
+      uses: actions/upload-artifact@v2
+      with:
+          name: mutation-report
+          path: mutation-report.html
