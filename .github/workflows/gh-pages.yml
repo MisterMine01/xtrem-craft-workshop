@@ -12,13 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - name: Download build artifact from triggered workflow
-      #   uses: dawidd6/action-download-artifact@v2
-      #   with:
-      #     run_id: ${{ github.event.workflow_run.id }}
-      #     name: mutation-report
-      #     path: ./artifacts
-      #     search_artifacts: true
+      - uses: actions/checkout@v2
+      - name: Download build artifact from triggered workflow
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          run_id: ${{ github.event.workflow_run.id }}
+          name: mutation-report
+          path: ./artifacts
+          search_artifacts: true
 
 
       - name: checkout with all html
