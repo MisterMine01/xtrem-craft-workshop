@@ -19,7 +19,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git fetch
-          git checkout origin gh-pages
+          git checkout origin/gh-pages
           git pull origin gh-pages --force
           git checkout master php/mutation-report.html
           git checkout master gh-pages/index.html
@@ -27,6 +27,7 @@ jobs:
           mv php/mutation-report.html mutation-report.html
           git add index.html mutation-report.html
           git commit -m "Update index.html and mutation-report.html" 
+
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
