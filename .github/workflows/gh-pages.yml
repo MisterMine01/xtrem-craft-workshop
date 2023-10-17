@@ -13,6 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Download build artifact from triggered workflow
         uses: dawidd6/action-download-artifact@v2
         with:
@@ -32,6 +33,7 @@ jobs:
           tree
           git checkout master gh-pages/index.html
           mv gh-pages/index.html index.html
+          mv artifact/mutation-report.html mutation-report.html
           git add index.html mutation-report.html
           git commit -m "Update index.html and mutation-report.html" 
         # git checkout master php/mutation-report.html
