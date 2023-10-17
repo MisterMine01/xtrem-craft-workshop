@@ -56,7 +56,7 @@ class PortfolioTest extends TestCase
      *
      * @return void
      */
-    public function test_total_money_different_current_in_portfolio_without_exchange_rate()
+    public function test_total_money_with_different_currency_in_portfolio_without_exchange_rate()
     {
         // Arrange
         $bank = Bank::create(Currency::USD(), Currency::EUR(), 1.2);
