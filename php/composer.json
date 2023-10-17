@@ -3,6 +3,12 @@
     "license": "proprietary",
     "minimum-stability": "stable",
     "prefer-stable": true,
+    "authors": [
+      {
+        "name": "FOUSSAC Mathis",
+        "email": "master@master.com"
+      }
+    ],
     "require": {
         "php": ">=8.0",
         "ext-ctype": "*",
