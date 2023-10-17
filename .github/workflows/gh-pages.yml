@@ -24,6 +24,7 @@ jobs:
 
       - name: checkout with all html
         run: |
+          cd ..
           echo $PWD
           tree
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
