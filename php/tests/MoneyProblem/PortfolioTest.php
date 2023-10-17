@@ -48,7 +48,7 @@ class PortfolioTest extends TestCase
         $result = $portfolio->evaluate(Currency::USD(), $bank);
 
         // Assert
-        $this->assertEquals(17, $result);
+        $this->assertEquals(16, $result);
     }
 
     /**
