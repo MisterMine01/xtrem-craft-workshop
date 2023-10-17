@@ -18,8 +18,8 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git checkout origin/gh-pages
-          git pull origin gh-pages
+          git checkout gh-pages
+          git pull origin gh-pages --force
           git checkout master php/mutation-report.html
           git checkout master gh-pages/index.html
           mv gh-pages/index.html index.html
