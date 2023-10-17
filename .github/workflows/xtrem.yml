@@ -5,8 +5,16 @@ on:
     branches:
       - '*' # Push to all branches
       - '!gh-pages' # Exclude gh-pages
+    paths:
+      - "php/**" # Only run on changes within the php directory
+      - ".github/workflows/xtrem.yml" # Only run on changes to the workflow file
+      - "gh-pages" # Only run for modify the github pages branch
   pull_request:
     branches: [ "main" ]
+    paths:
+      - "php/**" # Only run on changes within the php directory
+      - ".github/workflows/xtrem.yml" # Only run on changes to the workflow file
+      - "gh-pages" # Only run for modify the github pages branch
 
 permissions:
   contents: read
