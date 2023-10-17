@@ -4,8 +4,8 @@ namespace Tests\MoneyProblem;
 
 use MoneyProblem\Domain\Bank;
 use MoneyProblem\Domain\Currency;
-use MoneyProblem\Domain\Portfolio;
 use MoneyProblem\Domain\MissingExchangeRateException;
+use MoneyProblem\Domain\Portfolio;
 use Pitchart\Phlunit\Check;
 use PHPUnit\Framework\TestCase;
 
@@ -64,10 +64,7 @@ class PortfolioTest extends TestCase
         $portfolio->add(10, Currency::USD());
         $portfolio->add(10, Currency::EUR());
 
-        //$this->expectException(\MissingExchangeRateException::class);
-        //$this->expectExceptionMessage("USD->KRW");
         // Act
-        
         Check::thatCall(fn() => $portfolio->evaluate(Currency::KRW(), $bank))->throws(MissingExchangeRateException::class)->isDescribedBy("USD->KRW");
     }
 
@@ -83,12 +80,29 @@ class PortfolioTest extends TestCase
         $portfolio = new Portfolio();
         $portfolio->add(10, Currency::EUR());
         $portfolio->add(5, Currency::USD());
+
         // Act
         $res = $portfolio->evaluate(Currency::KRW(), $bank);
+
         // Assert
         $this->assertEquals(21035.1, $res);
     }
 
+    /**
+     * Evaluer que le portefeuille est vide
+     *
+     * @return void
+     */
+    public function test_portfolio_is_empty(){
+        // Arrange
+        $bank = Bank::create(Currency::EUR(), Currency::KRW(), 1427.16);
+        $portfolio = new Portfolio();
 
+        // Act
+        $res = $portfolio->evaluate(Currency::KRW(), $bank);
+
+        // Assert
+        $this->assertEquals(0, $res);
+    }
 
 }

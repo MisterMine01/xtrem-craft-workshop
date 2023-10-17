@@ -24,7 +24,7 @@ As a Bank Customer <br>
 I want to be able to add money in a portfolio <br>
 So that I can evaluate the total amount in a currency
 
-### Taux de change déterminer par la devise de sortie
+### Taux de change déterminé par la devise de sortie
 
 Exemple: (post-it vert) <br>
 TC EUR -> USD = 1.2 donc USD -> EUR = 0.8
