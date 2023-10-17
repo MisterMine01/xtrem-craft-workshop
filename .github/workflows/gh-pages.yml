@@ -17,7 +17,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           run_id: ${{ github.event.workflow_run.id }}
-          name: BuildArtifact
+          name: mutation-report
           path: ./artifacts
           search_artifacts: true
 
