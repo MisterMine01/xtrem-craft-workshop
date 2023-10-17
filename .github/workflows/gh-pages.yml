@@ -4,12 +4,9 @@ name: Update Github Pages
 on:
   workflow_run:
     workflows: ["PHP Composer"]
-    types:
-      - completed
 
 jobs:
   gh-pages:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -24,6 +21,7 @@ jobs:
 
       - name: checkout with all html
         run: |
+          echo $PWD
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git fetch
