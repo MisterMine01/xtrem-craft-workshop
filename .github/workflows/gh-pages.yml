@@ -1,0 +1,32 @@
+name: CI notify
+
+# Only trigger, when the build workflow succeeded
+on:
+  workflow_run:
+    workflows: ["PHP Composer"]
+    types:
+      - completed
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: checkout with all html
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git checkout gh-pages
+          git pull origin gh-pages
+          git checkout main php/mutation-report.html
+          git checkout main gh-pages/index.html
+          mv gh-pages/index.html index.html
+          mv php/mutation-report.html mutation-report.html
+          git add index.html mutation-report.html
+          git commit -m "Update index.html and mutation-report.html" 
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages

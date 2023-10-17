@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - '*' # Push to all branches
+      - '!gh-pages' # Exclude gh-pages
   pull_request:
     branches: [ "main" ]
 
