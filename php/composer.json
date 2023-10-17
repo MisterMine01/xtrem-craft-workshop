@@ -1,8 +1,11 @@
 {
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
     "minimum-stability": "stable",
     "prefer-stable": true,
+
+    "name": "ici/xtrem",
+    "description": "Cool description",
     "authors": [
       {
         "name": "FOUSSAC Mathis",
