@@ -52,12 +52,21 @@ class PortfolioTest extends TestCase
         //$this->expectException(\MissingExchangeRateException::class);
         //$this->expectExceptionMessage("USD->KRW");
         // Act
-
         
         Check::thatCall(fn() => $portfolio->evaluate(Currency::KRW(), $bank))->throws(MissingExchangeRateException::class)->isDescribedBy("USD->KRW");
-       
-        
-        
+    }
+
+    public function test_evaluate_currency_that_is_not_in_portfolio(){
+        // Arrange
+        $bank = Bank::create(Currency::EUR(), Currency::KRW(), 1427.16);
+        $bank->addEchangeRate(Currency::USD(), Currency::KRW(), 1352.7);
+        $portfolio = new Portfolio();
+        $portfolio->add(10, Currency::EUR());
+        $portfolio->add(5, Currency::USD());
+        // Act
+        $res = $portfolio->evaluate(Currency::KRW(), $bank);
+        // Assert
+        $this->assertEquals(21035.1, $res);
     }
 
 
