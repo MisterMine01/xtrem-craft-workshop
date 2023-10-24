@@ -87,7 +87,7 @@ jobs:
           mv gh-pages/* .
           mv artifacts/mutation-report/mutation-report.html mutation-report.html
           git add index.html mutation-report.html
-          git commit -m "Update index.html and mutation-report.html" 
+          [[ -n $(git status -s) ]] && git commit -m "Update index.html and mutation-report.html" || echo "No changes to commit"
         # git checkout master php/mutation-report.html
         # mv php/mutation-report.html mutation-report.html
 
