@@ -13,12 +13,12 @@ class Money
         $this->currency = $currency;
     }
 
-    public function add(float $amount, Currency $currency) {
-
-        
-        $new_money = new Money($amount, $currency);
-
-        return $new_money;
+    public function add(Money $money): Money
+    {
+        if ($this->currency !== $money->currency) {
+            throw new \InvalidArgumentException('Cannot add money with different currencies');
+        }
+        return new Money($this->amount + $money->amount, $this->currency);
     }
 
 }
