@@ -63,16 +63,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/download-artifact@v3
-        with:
-          path: ./artifacts
-
-      # - name: Download build artifact from triggered workflow
-      #   uses: dawidd6/action-download-artifact@v2
+      # - uses: actions/download-artifact@v3
       #   with:
-      #     workflow: xtrem.yml
       #     path: ./artifacts
-      #     #search_artifacts: true
+
+      - name: Download build artifact from triggered workflow
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          run_id: ${{ github.run_id }}
+          path: ./artifacts
+          #search_artifacts: true
 
 
       - name: checkout with all html
