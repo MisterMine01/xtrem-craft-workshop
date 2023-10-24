@@ -2,6 +2,7 @@
 
 namespace MoneyProblem\Domain;
 
+
 use phpDocumentor\Reflection\Types\Integer;
 
 class Money
@@ -26,6 +27,11 @@ class Money
     public function getCurrency(): Currency
     {
         return $this->currency;
+    }
+
+    public function hasCurrency(Currency $to): bool
+    {
+        return $this->currency == $to;
     }
 
     public function add(Money $money): Money
