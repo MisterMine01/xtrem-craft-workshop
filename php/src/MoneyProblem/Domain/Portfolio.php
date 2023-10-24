@@ -18,8 +18,7 @@ class Portfolio
     {
         $total = 0;
         foreach ($this->_money as $key => $value) {
-            $money = new Money($value["amount"], $value["currency"]);
-            $total += $bank->convert($money, $currency);
+            $total += $bank->convert(new Money($value["amount"], $value["currency"]), $currency);
         }
         return $total;
     }
