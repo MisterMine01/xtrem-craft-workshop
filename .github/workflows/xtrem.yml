@@ -88,10 +88,12 @@ jobs:
           mv artifacts/mutation-report/mutation-report.html mutation-report.html
           git add index.html mutation-report.html
           [[ -n $(git status -s) ]] && git commit -m "Update index.html and mutation-report.html" || echo "No changes to commit"
+          [[ -n $(git status -s) ]] && export PUSH=true || export PUSH=false
         # git checkout master php/mutation-report.html
         # mv php/mutation-report.html mutation-report.html
 
       - name: Push changes
         uses: ad-m/github-push-action@master
+        if: env.PUSH == 'true'
         with:
           branch: gh-pages
