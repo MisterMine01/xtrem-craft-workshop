@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Xtrem-craft-workflow
 
 on:
   push:
@@ -54,7 +54,44 @@ jobs:
       # --min-msi=95 --min-covered-msi=95 --only-covered
 
     - name: Upload mutation report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
           name: mutation-report
           path: /home/runner/work/xtrem-craft-workshop/xtrem-craft-workshop/php/mutation-report.html
+  
+  gh-pages:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download build artifact from triggered workflow
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: xtrem.yml
+          path: ./artifacts
+          #search_artifacts: true
+
+
+      - name: checkout with all html
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git fetch
+          git checkout origin/gh-pages
+          git pull origin gh-pages --force
+          tree
+          git checkout master gh-pages/index.html
+          git reset HEAD
+          mv gh-pages/* .
+          mv artifacts/mutation-report/mutation-report.html mutation-report.html
+          git add index.html mutation-report.html
+          [[ -n $(git status -s) ]] && git commit -m "Update index.html and mutation-report.html" || echo "No changes to commit"
+        # git checkout master php/mutation-report.html
+        # mv php/mutation-report.html mutation-report.html
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
