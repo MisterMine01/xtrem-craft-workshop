@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Xtrem-craft-workflow
 
 on:
   push:
@@ -54,7 +54,7 @@ jobs:
       # --min-msi=95 --min-covered-msi=95 --only-covered
 
     - name: Upload mutation report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
           name: mutation-report
           path: /home/runner/work/xtrem-craft-workshop/xtrem-craft-workshop/php/mutation-report.html
@@ -64,7 +64,7 @@ jobs:
     needs: build
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Download build artifact from triggered workflow
         uses: dawidd6/action-download-artifact@v2
