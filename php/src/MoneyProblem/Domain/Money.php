@@ -34,6 +34,11 @@ class Money
         return $this->currency == $to;
     }
 
+    public function convert(float $rate, Currency $currency): Money
+    {
+        return new Money($this->amount * $rate, $currency);
+    }
+    
     public function add(Money $money): Money
     {
         if ($this->currency != $money->currency) {
