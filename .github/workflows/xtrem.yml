@@ -63,23 +63,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     path: ./artifacts
-
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
-      - name: Download build artifact from triggered workflow
-        uses: dawidd6/action-download-artifact@v2.28.0
+      - uses: actions/download-artifact@v3
         with:
-          workflow: "xtrem.yml"
-          # run_id: ${{ github.run_id }}
-          workflow_conclusion: ""
           path: ./artifacts
-          #search_artifacts: true
+
+      # - name: Dump GitHub context
+      #   env:
+      #     GITHUB_CONTEXT: ${{ toJSON(github) }}
+      #   run: echo "$GITHUB_CONTEXT"
+
+      # - name: Download build artifact from triggered workflow
+      #   uses: dawidd6/action-download-artifact@v2.28.0
+      #   with:
+      #     workflow: "xtrem.yml"
+      #     # run_id: ${{ github.run_id }}
+      #     workflow_conclusion: ""
+      #     path: ./artifacts
+      #     #search_artifacts: true
 
 
       - name: checkout with all html
