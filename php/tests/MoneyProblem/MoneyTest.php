@@ -40,7 +40,7 @@ class MoneyTest extends TestCase
     {
         $money = new Money(4002, Currency::KRW());
 
-        $sum = $money->divide(new Money(4, Currency::KRW()));
+        $sum = $money->divide(4);
 
         $this->assertEquals($sum, new Money(1000.5, Currency::KRW()));
     }
@@ -52,6 +52,15 @@ class MoneyTest extends TestCase
 
         $money = new Money(4002, Currency::KRW());
 
-        $money->divide(new Money(0, Currency::KRW()));
+        $money->divide(0);
+    }
+
+    public function testMultiplyCurrency()
+    {
+        $money = new Money(4002, Currency::KRW());
+
+        $fact = $money->multiply(2);
+
+        $this->assertEquals($fact, new Money(8002, Currency::KRW()));
     }
 }
