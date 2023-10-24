@@ -61,6 +61,6 @@ class MoneyTest extends TestCase
 
         $fact = $money->multiply(2);
 
-        $this->assertEquals($fact, new Money(8002, Currency::KRW()));
+        $this->assertEquals($fact, new Money(8004, Currency::KRW()));
     }
 }

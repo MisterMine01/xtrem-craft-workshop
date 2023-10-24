@@ -2,6 +2,8 @@
 
 namespace MoneyProblem\Domain;
 
+use phpDocumentor\Reflection\Types\Integer;
+
 class Money
 {
     private float $amount;
@@ -24,12 +26,20 @@ class Money
         return new Money($this->amount + $money->amount, $this->currency);
     }
 
-    public function divide(Money $money): Money
+    public function divide(int $money): Money
     {
-        if ($money->amount == 0) {
+        if ($money == 0) {
             throw new \LogicException('Cannot divide by zero');
         }
-        return new Money($this->amount / $money->amount, $this->currency);
+        return new Money($this->amount / $money, $this->currency);
+    }
+
+    public function multiply(int $money): Money
+    {
+        if ($money == 0) {
+            throw new \LogicException('Cannot divide by zero');
+        }
+        return new Money($this->amount * $money, $this->currency);
     }
 
 }
