@@ -16,6 +16,16 @@ class MoneyTest extends TestCase
         new Money(-5, Currency::USD());
     }
 
+    public function testCreatePositiveMoney()
+    {
+        new Money(5, Currency::USD());
+    }
+
+    public function testCreateZeroMoney()
+    {
+        new Money(0, Currency::USD());
+    }
+
     public function testAddWithSameCurrencies()
     {
         $money = new Money(5, Currency::USD());

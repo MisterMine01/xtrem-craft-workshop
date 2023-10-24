@@ -36,9 +36,6 @@ class Money
 
     public function multiply(int $money): Money
     {
-        if ($money == 0) {
-            throw new \LogicException('Cannot divide by zero');
-        }
         return new Money($this->amount * $money, $this->currency);
     }
 
