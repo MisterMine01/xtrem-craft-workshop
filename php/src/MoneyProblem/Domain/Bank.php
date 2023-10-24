@@ -45,8 +45,7 @@ class Bank
 
     /**
      * Convert an amount from one currency to another currency
-     * @param float $amount
-     * @param Currency $currency1
+     * @param Money $money
      * @param Currency $currency2
      * @return float
      * @throws MissingExchangeRateException
