@@ -18,12 +18,18 @@ class MoneyTest extends TestCase
 
     public function testCreatePositiveMoney()
     {
-        new Money(5, Currency::USD());
+        $money = new Money(5, Currency::USD());
+
+        $this->assertEquals($money->getAmount(), 5);
+        $this->assertEquals($money->getCurrency(), Currency::USD());
     }
 
     public function testCreateZeroMoney()
     {
-        new Money(0, Currency::USD());
+        $money = new Money(0, Currency::USD());
+
+        $this->assertEquals($money->getAmount(), 0);
+        $this->assertEquals($money->getCurrency(), Currency::USD());
     }
 
     public function testAddWithSameCurrencies()

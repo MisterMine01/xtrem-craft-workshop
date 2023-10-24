@@ -18,6 +18,16 @@ class Money
         $this->currency = $currency;
     }
 
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    public function getCurrency(): Currency
+    {
+        return $this->currency;
+    }
+
     public function add(Money $money): Money
     {
         if ($this->currency != $money->currency) {
