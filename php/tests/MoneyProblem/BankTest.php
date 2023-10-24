@@ -22,10 +22,10 @@ class BankTest extends TestCase
         $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
 
         // Act
-        $result = $bank->convert(new Money(10, Currency::EUR()), Currency::USD());
+        $result = $bank->convertMoney(new Money(10, Currency::EUR()), Currency::USD());
 
         // Assert
-        $this->assertEquals(12, $result);
+        $this->assertEquals(new Money(12, Currency::USD()), $result);
     }
 
     /**
@@ -39,10 +39,10 @@ class BankTest extends TestCase
         $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
 
         // Act
-        $result = $bank->convert(new Money(10, Currency::EUR()), Currency::EUR());
+        $result = $bank->convertMoney(new Money(10, Currency::EUR()), Currency::EUR());
 
         // Assert
-        $this->assertEquals(10, $result);
+        $this->assertEquals(new Money(10, Currency::EUR()), $result);
     }
 
     /**
@@ -56,7 +56,7 @@ class BankTest extends TestCase
         $this->expectExceptionMessage('EUR->KRW');
 
         $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
-        $bank->convert(new Money(10, Currency::EUR()), Currency::KRW());
+        $bank->convertMoney(new Money(10, Currency::EUR()), Currency::KRW());
     }
 
     /**
@@ -68,15 +68,15 @@ class BankTest extends TestCase
     {
         // Arrange
         $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
-        $result = $bank->convert(new Money(10, Currency::EUR()), Currency::USD());
-        $this->assertEquals(12, $result);
+        $result = $bank->convertMoney(new Money(10, Currency::EUR()), Currency::USD());
+        $this->assertEquals(new Money(12, Currency::USD()), $result);
 
         // Act
         $bank->addEchangeRate(Currency::EUR(), Currency::USD(), 1.3);
-        $result = $bank->convert(new Money(10, Currency::EUR()), Currency::USD());
+        $result = $bank->convertMoney(new Money(10, Currency::EUR()), Currency::USD());
 
         // Assert
-        $this->assertEquals(13, $result);
+        $this->assertEquals(new Money(13, Currency::USD()), $result);
 
     }
 
