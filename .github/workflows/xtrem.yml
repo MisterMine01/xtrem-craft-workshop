@@ -75,8 +75,9 @@ jobs:
       - name: Download build artifact from triggered workflow
         uses: dawidd6/action-download-artifact@v2
         with:
-          workflow: xtrem.yml
+          # workflow: xtrem.yml
           run_id: ${{ github.run_id }}
+          workflow_conclusion: ""
           path: ./artifacts
           #search_artifacts: true
 
