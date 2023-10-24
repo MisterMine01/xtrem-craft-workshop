@@ -85,7 +85,7 @@ jobs:
           git checkout master gh-pages/index.html
           git reset HEAD
           mv gh-pages/* .
-          mv artifacts/mutation-report.html mutation-report.html
+          mv artifacts/mutation-report/mutation-report.html mutation-report.html
           git add index.html mutation-report.html
           git commit -m "Update index.html and mutation-report.html" 
         # git checkout master php/mutation-report.html
