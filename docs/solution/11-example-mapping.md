@@ -51,7 +51,7 @@ I want to convert a given amount in currency into another currency
 So it can be used to evaluate client portfolios
 ```
 
-Exemple :
+Exemple : Convert EUR vers USD
 - Banque : EUR
 - Taux de change : USD -> 1.2
 - convert 10€ -> USD
@@ -64,12 +64,12 @@ Rule : RoundTripping
 * 9€ <= resultat <= 11€ 
 * (10€ plus ou moins 10%)
 
-Exemple :
+Exemple : Convert EUR vers EUR
 - Banque : EUR
 - EUR -> EUR 
 - 10€ -> 10€ -> 10€ => pas de taux de change 
 
-Exemple :
+Exemple : Convert KRW vers USD si le pivot est EUR
 - Banque : EUR
 - KRW -> USD 
 - KRW -> EUR -> USD
