@@ -79,7 +79,7 @@ class BankTest extends TestCase
         $this->assertEquals(new Money(13, Currency::USD()), $result);
     }
 
-    public function make_eur_bank()
+    public function test_make_eur_bank()
     {
         // Arrange
         $bank = Bank::createBankPivot(Currency::EUR());
@@ -91,7 +91,7 @@ class BankTest extends TestCase
         $this->assertEquals(Currency::EUR(), $result);
     }
 
-    public function add_eur_usd_rate()
+    public function test_add_eur_usd_rate()
     {
         // Arrange
         $bank = Bank::createBankPivot(Currency::EUR());
@@ -104,7 +104,7 @@ class BankTest extends TestCase
         $this->assertEquals(1.2, $result);
     }
 
-    public function add_eur_usd_rate_and_convert()
+    public function test_add_eur_usd_rate_and_convert()
     {
         // Arrange
         $bank = Bank::createBankPivot(Currency::EUR());
@@ -117,7 +117,7 @@ class BankTest extends TestCase
         $this->assertEquals(new Money(12, Currency::USD()), $result);
     }
 
-    public function add_krw_and_usd_rate_and_convert()
+    public function test_add_krw_and_usd_rate_and_convert()
     {
         // Arrange
         $bank = Bank::createBankPivot(Currency::EUR());
