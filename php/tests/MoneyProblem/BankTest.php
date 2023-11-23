@@ -2,7 +2,6 @@
 
 namespace Tests\MoneyProblem;
 
-use MoneyProblem\Domain\Bank;
 use MoneyProblem\Domain\Currency;
 use MoneyProblem\Domain\MissingExchangeRateException;
 use MoneyProblem\Domain\Money;
@@ -19,7 +18,10 @@ class BankTest extends TestCase
     public function test_convert_money_eur_to_usd_returns_float()
     {
         // Arrange
-        $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
+        $bank = BankBuilder::ABankCreation()
+            ->WithPivotCurrency(Currency::EUR())
+            ->WithExchangeRate(Currency::USD(), 1.2)
+            ->Build();
 
         // Act
         $result = $bank->convertMoney(new Money(10, Currency::EUR()), Currency::USD());
@@ -36,7 +38,10 @@ class BankTest extends TestCase
     public function test_convert_money_eur_to_eur_returns_same_value()
     {
         // Arrange
-        $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
+        $bank = BankBuilder::ABankCreation()
+            ->WithPivotCurrency(Currency::EUR())
+            ->WithExchangeRate(Currency::USD(), 1.2)
+            ->Build();
 
         // Act
         $result = $bank->convertMoney(new Money(10, Currency::EUR()), Currency::EUR());
@@ -55,7 +60,10 @@ class BankTest extends TestCase
         $this->expectException(MissingExchangeRateException::class);
         $this->expectExceptionMessage('EUR->KRW');
 
-        $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
+        $bank = BankBuilder::ABankCreation()
+            ->WithPivotCurrency(Currency::EUR())
+            ->WithExchangeRate(Currency::USD(), 1.2)
+            ->Build();
         $bank->convertMoney(new Money(10, Currency::EUR()), Currency::KRW());
     }
 
@@ -67,7 +75,10 @@ class BankTest extends TestCase
     public function test_convert_money_with_different_exchange_rates_returns_different_floats()
     {
         // Arrange
-        $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
+        $bank = BankBuilder::ABankCreation()
+            ->WithPivotCurrency(Currency::EUR())
+            ->WithExchangeRate(Currency::USD(), 1.2)
+            ->Build();
         $result = $bank->convertMoney(new Money(10, Currency::EUR()), Currency::USD());
         $this->assertEquals(new Money(12, Currency::USD()), $result);
 
