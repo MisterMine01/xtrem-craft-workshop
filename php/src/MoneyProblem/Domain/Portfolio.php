@@ -19,7 +19,10 @@ class Portfolio
         $total = 0;
         foreach ($this->_money as $key => $value) {
             $total += $bank->convertMoney(new Money($value['amount'], $value['currency']), $currency)->getAmount();
+            var_dump($bank->convertMoney(new Money($value['amount'], $value['currency']), $currency)->getAmount());
         }
+
+        
         return $total;
     }
 }

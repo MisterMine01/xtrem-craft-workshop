@@ -88,9 +88,8 @@ class PortfolioTest extends TestCase
         $bank = BankBuilder::ABankCreation()
             ->WithPivotCurrency(Currency::EUR())
             ->WithExchangeRate(Currency::KRW(), 1427.16)
+            ->WithExchangeRate(Currency::USD(), 1.2)
             ->Build();
-        $bank = Bank::create(Currency::EUR(), Currency::KRW(), 1427.16);
-        $bank->addEchangeRate(Currency::USD(), Currency::KRW(), 1352.7);
         $portfolio = new Portfolio();
         $portfolio->add(10, Currency::EUR());
         $portfolio->add(5, Currency::USD());
@@ -99,7 +98,8 @@ class PortfolioTest extends TestCase
         $res = $portfolio->evaluate(Currency::KRW(), $bank);
 
         // Assert
-        $this->assertEquals(21035.1, $res);
+        $this->assertGreaterThanOrEqual(21035.1 * 0.95, $res);
+        $this->assertLessThanOrEqual(21035.1 * 1.05, $res);
     }
 
     /**

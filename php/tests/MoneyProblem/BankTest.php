@@ -64,7 +64,9 @@ class BankTest extends TestCase
             ->WithPivotCurrency(Currency::EUR())
             ->WithExchangeRate(Currency::USD(), 1.2)
             ->Build();
+
         $bank->convertMoney(new Money(10, Currency::EUR()), Currency::KRW());
+
     }
 
     /**

@@ -39,9 +39,13 @@ class BankBuilder
 
     public function Build()
     {
-        $key = array_keys($this->exchangeRates)[0];
 
-        $bank = Bank::create($this->pivotCurrency, Currency::from($key), $this->exchangeRates[$key]);
+        $bank = Bank::create($this->pivotCurrency, $this->pivotCurrency, 1);
+
+        foreach ($this->exchangeRates as $currency => $rate) {
+            $bank->addEchangeRate($this->pivotCurrency, Currency::from($currency), $rate);
+            $bank->addEchangeRate(Currency::from($currency), $this->pivotCurrency, 1/$rate);
+        }
         return $bank;
     }
 }

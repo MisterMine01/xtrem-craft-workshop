@@ -6,14 +6,16 @@ use function array_key_exists;
 
 class Bank
 {
-    private array $exchangeRates;         
+    private array $exchangeRates;
+    private Currency $pivotCurrency;
 
     /**
      * @param array $exchangeRates
      */
-    private function __construct(array $exchangeRates = [])
+    public function __construct(Currency $pivotCurrency, array $exchangeRates = [])
     {
         $this->exchangeRates = $exchangeRates;
+        $this->pivotCurrency = $pivotCurrency;
     }
 
        /**
@@ -25,7 +27,7 @@ class Bank
      */
     public static function create(Currency $currency1, Currency $currency2, float $rate)
     {
-        $bank = new Bank([]);
+        $bank = new Bank($currency1, []);
         $bank->addEchangeRate($currency1, $currency2, $rate);
 
         return $bank;
@@ -62,10 +64,15 @@ class Bank
         if ($money->hasCurrency($currency2)) {
             return new Money($money->getAmount(), $currency2);
         }
-        if (!array_key_exists($money->getCurrency() . '->' . $currency2, $this->exchangeRates)) {
+
+        if (!array_key_exists($money->getCurrency() . '->' . $this->pivotCurrency, $this->exchangeRates) ||
+            !array_key_exists($this->pivotCurrency . '->' . $currency2, $this->exchangeRates)) {
             throw new MissingExchangeRateException($money->getCurrency(), $currency2);
         }
-        return $money->convert($this->getExchangeRate($money->getCurrency(), $currency2), $currency2);
+
+        return $money
+                ->convert($this->getExchangeRate($money->getCurrency(), $this->pivotCurrency), $this->pivotCurrency)
+                ->convert($this->getExchangeRate($this->pivotCurrency, $currency2), $currency2);
     }
 
 
