@@ -31,6 +31,11 @@ class Bank
         return $bank;
     }
 
+    public static function createBankPivot(Currency $currency)
+    {
+        // TODO: Implement createBankPivot() method.
+    }
+
     /**
      * Add an exchange rate to the bank
      * @param Currency $currency1
@@ -41,6 +46,21 @@ class Bank
     public function addEchangeRate(Currency $currency1, Currency $currency2, float $rate): void
     {
         $this->exchangeRates[($currency1 . '->' . $currency2)] = $rate;
+    }
+
+    public function addPivotRate(Currency $currency, float $rate)
+    {
+        // TODO: Implement addPivotRate() method.
+    }
+
+    public function getPivot()
+    {
+        // TODO: Implement getPivot() method.
+    }
+
+    public function getPivotRate(Currency $currency)
+    {
+        // TODO: Implement getPivotRate() method.
     }
 
     private function getExchangeRate(Currency $currency1, Currency $currency2): ?float
