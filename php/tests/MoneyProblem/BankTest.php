@@ -78,5 +78,4 @@ class BankTest extends TestCase
         // Assert
         $this->assertEquals(new Money(13, Currency::USD()), $result);
     }
-
 }

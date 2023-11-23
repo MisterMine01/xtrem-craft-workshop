@@ -43,30 +43,12 @@ class Bank
         $this->exchangeRates[($currency1 . '->' . $currency2)] = $rate;
     }
 
-    public function getExchangeRate(Currency $currency1, Currency $currency2): float
+    private function getExchangeRate(Currency $currency1, Currency $currency2): ?float
     {
+        if (!isset($this->exchangeRates[($currency1 . '->' . $currency2)])) {
+            return null;
+        }
         return $this->exchangeRates[($currency1 . '->' . $currency2)];
-    }
-
-    public function setExchangeRates(array $exchangeRates): void
-    { 
-        $this->exchangeRates = $exchangeRates;
-    }    
-
-
-
-    /**
-     * Convert an amount from one currency to another currency
-     * @param float $amount
-     * @param Currency $currency1
-     * @param Currency $currency2
-     * @return float
-     * @throws MissingExchangeRateException
-     */
-    public function convert(float $amount, Currency $currency1, Currency $currency2): float
-    {
-        $money = new Money($amount, $currency1);
-        return $this->convertMoney($money, $currency2)->getAmount();
     }
 
     /**
@@ -83,9 +65,6 @@ class Bank
         if (!array_key_exists($money->getCurrency() . '->' . $currency2, $this->exchangeRates)) {
             throw new MissingExchangeRateException($money->getCurrency(), $currency2);
         }
-        return $money->convert($this->getExchangeRate($money->getCurrency() , $currency2),$currency2);
-        
-
+        return $money->convert($this->getExchangeRate($money->getCurrency(), $currency2), $currency2);
     }
-
 }
