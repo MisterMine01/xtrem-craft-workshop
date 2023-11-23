@@ -54,7 +54,7 @@ So it can be used to evaluate client portfolios
 Exemple :
 - Banque : EUR
 - Taux de change : USD -> 1.2
--> convert 10€ -> USD
+- convert 10€ -> USD
 * 12 USD 
 
 Rule : RoundTripping 
@@ -63,15 +63,17 @@ Rule : RoundTripping
 - convert 10€ -> USD -> EUR
 * 9€ <= resultat <= 11€ 
 * (10€ plus ou moins 10%)
-</br>
 
+Exemple :
 - Banque : EUR
--> 10€ -> 10€ -> 10€ => pas de taux de change 
-</br>
+- EUR -> EUR 
+- 10€ -> 10€ -> 10€ => pas de taux de change 
 
+Exemple :
 - Banque : EUR
 - KRW -> USD 
 - KRW -> EUR -> USD
-</br>
+
+Exemple : 
 - Pas de devise pivot
 * Erreur : devise pivot obligatoire
