@@ -1,5 +1,11 @@
 # Xtrem Craft workshop
 
+BOUGET Alexandre
+BRIANCON Anna
+CORDIER Romain
+FOUSSAC Mathis
+LOUPIAC Benjamin
+
 [Github Pages](https://alex-bouget.github.io/xtrem-craft-workshop/)
 
 This workshop is based on the [Xtrem TDD workshop](https://github.com/les-tontons-crafters/xtrem-tdd-money-kata), 
