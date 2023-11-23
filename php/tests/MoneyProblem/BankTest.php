@@ -16,7 +16,7 @@ class BankTest extends TestCase
      * @return void
      * @throws MissingExchangeRateException
      */
-    public function test_convert_eur_to_usd_returns_float()
+    public function test_convert_money_eur_to_usd_returns_float()
     {
         // Arrange
         $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
@@ -33,7 +33,7 @@ class BankTest extends TestCase
      * @return void
      * @throws MissingExchangeRateException
      */
-    public function test_convert_eur_to_eur_returns_same_value()
+    public function test_convert_money_eur_to_eur_returns_same_value()
     {
         // Arrange
         $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
@@ -50,7 +50,7 @@ class BankTest extends TestCase
      * @return void
      * @throws MissingExchangeRateException
      */
-    public function test_convert_throws_exception_on_missing_exchange_rate()
+    public function test_convert_money_throws_exception_on_missing_exchange_rate()
     {
         $this->expectException(MissingExchangeRateException::class);
         $this->expectExceptionMessage('EUR->KRW');
@@ -64,7 +64,7 @@ class BankTest extends TestCase
      * @return void
      * @throws MissingExchangeRateException
      */
-    public function test_convert_with_different_exchange_rates_returns_different_floats()
+    public function test_convert_money_with_different_exchange_rates_returns_different_floats()
     {
         // Arrange
         $bank = Bank::create(Currency::EUR(), Currency::USD(), 1.2);
@@ -77,7 +77,6 @@ class BankTest extends TestCase
 
         // Assert
         $this->assertEquals(new Money(13, Currency::USD()), $result);
-
     }
 
 }
