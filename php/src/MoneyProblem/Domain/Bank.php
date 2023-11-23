@@ -6,7 +6,7 @@ use function array_key_exists;
 
 class Bank
 {
-    private array $exchangeRates;
+    private array $exchangeRates;         
 
     /**
      * @param array $exchangeRates
@@ -16,7 +16,7 @@ class Bank
         $this->exchangeRates = $exchangeRates;
     }
 
-    /**
+       /**
      * Create a bank with a single exchange rate
      * @param Currency $currency1
      * @param Currency $currency2
@@ -87,4 +87,8 @@ class Bank
         }
         return $money->convert($this->getExchangeRate($money->getCurrency(), $currency2), $currency2);
     }
+
+
+          
+
 }
